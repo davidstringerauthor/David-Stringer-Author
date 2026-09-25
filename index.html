@@ -1,0 +1,2810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>David Stringer | Author of Islands of the Heart</title>
+  <meta name="description" content="David Stringer is the author of Islands of the Heart, a literary novel exploring memory, belonging, family, violence, identity and the Pacific." />
+  <meta name="author" content="David Stringer" />
+  <meta property="og:title" content="David Stringer | Author of Islands of the Heart" />
+  <meta property="og:description" content="David Stringer is the author of Islands of the Heart, a literary novel exploring memory, belonging, family, violence, identity and the Pacific." />
+  <meta property="og:image" content="ISLAND OF THE HEART.webp" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/png" href="me cool.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       CSS CUSTOM PROPERTIES
+    ============================================================ */
+    :root {
+      --bg-base:       #0b0b0b;
+      --bg-surface:    #101010;
+      --bg-raised:     #161616;
+      --bg-card:       #1a1a1a;
+      --bg-card-hover: #1f1f1f;
+      --accent-gold:   #c9a96e;
+      --accent-gold-dim:#a08045;
+      --accent-ocean:  #2a5f7f;
+      --accent-ocean-dim:#1d4358;
+      --text-primary:  #ede6d6;
+      --text-secondary:#b0a898;
+      --text-muted:    #6e6860;
+      --text-gold:     #c9a96e;
+      --border:        rgba(201,169,110,0.15);
+      --border-subtle: rgba(255,255,255,0.06);
+      --shadow-deep:   0 20px 60px rgba(0,0,0,0.6);
+      --shadow-card:   0 4px 24px rgba(0,0,0,0.4);
+      --radius-sm:     4px;
+      --radius-md:     8px;
+      --font-heading:  'Cormorant Garamond', Georgia, serif;
+      --font-body:     'Inter', system-ui, sans-serif;
+      --transition:    0.3s ease;
+      --transition-slow: 0.5s ease;
+      --max-w:         1200px;
+      --max-w-text:    780px;
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      background: none;
+      font-family: var(--font-body);
+    }
+
+    /* ============================================================
+       ACCESSIBILITY — FOCUS STATES
+    ============================================================ */
+    :focus-visible {
+      outline: 2px solid var(--accent-gold);
+      outline-offset: 3px;
+      border-radius: var(--radius-sm);
+    }
+
+    /* ============================================================
+       REDUCED MOTION
+    ============================================================ */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* ============================================================
+       UTILITY CLASSES
+    ============================================================ */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .section-label {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      display: block;
+      margin-bottom: 1.2rem;
+    }
+
+    .section-heading {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .section-rule {
+      width: 48px;
+      height: 1px;
+      background: var(--accent-gold);
+      border: none;
+      margin-bottom: 2.5rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============================================================
+       BUTTONS
+    ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.85rem 2rem;
+      border-radius: 0;
+      transition: all var(--transition);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--accent-gold);
+      color: #0b0b0b;
+      border: 1px solid var(--accent-gold);
+    }
+
+    .btn-primary:hover {
+      background: #d4b483;
+      border-color: #d4b483;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(201,169,110,0.25);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid rgba(237,230,214,0.35);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent-gold);
+      color: var(--accent-gold);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--accent-gold);
+      border: 1px solid var(--border);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      padding: 0.65rem 1.4rem;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(201,169,110,0.08);
+      border-color: var(--accent-gold);
+    }
+
+    /* ============================================================
+       NAVIGATION
+    ============================================================ */
+    #site-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 0 40px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(11,11,11,0.0);
+      backdrop-filter: blur(0px);
+      border-bottom: 1px solid transparent;
+      transition: background var(--transition-slow),
+                  backdrop-filter var(--transition-slow),
+                  border-color var(--transition-slow);
+    }
+
+    #site-nav.scrolled {
+      background: rgba(11,11,11,0.92);
+      backdrop-filter: blur(16px);
+      border-bottom-color: var(--border-subtle);
+    }
+
+    .nav-logo {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--text-primary);
+      transition: color var(--transition);
+      flex-shrink: 0;
+    }
+
+    .nav-logo:hover {
+      color: var(--accent-gold);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.67rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      transition: color var(--transition);
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--accent-gold);
+      transition: width var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--text-primary);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Hamburger */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      width: 28px;
+      padding: 4px 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 100%;
+      height: 1px;
+      background: var(--text-primary);
+      transition: all var(--transition);
+      transform-origin: center;
+    }
+
+    .nav-hamburger[aria-expanded="true"] span:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    .nav-hamburger[aria-expanded="true"] span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    .nav-hamburger[aria-expanded="true"] span:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      top: 70px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(11,11,11,0.97);
+      backdrop-filter: blur(20px);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-mobile.open {
+      display: flex;
+    }
+
+    .nav-mobile a {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: var(--text-secondary);
+      letter-spacing: 0.05em;
+      transition: color var(--transition);
+    }
+
+    .nav-mobile a:hover {
+      color: var(--accent-gold);
+    }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background: var(--bg-base);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 65% 45%, rgba(42,95,127,0.18) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 40% at 80% 80%, rgba(201,169,110,0.05) 0%, transparent 60%),
+        radial-gradient(ellipse 80% 80% at 50% 50%, rgba(11,11,11,0.6) 0%, transparent 100%);
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .hero-horizon {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 58%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(42,95,127,0.25), rgba(201,169,110,0.12), transparent);
+      z-index: 1;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      width: 100%;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 120px 40px 80px;
+    }
+
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.2s forwards;
+    }
+
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: clamp(3.5rem, 7vw, 6.5rem);
+      font-weight: 300;
+      line-height: 1.0;
+      letter-spacing: 0.04em;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.4s forwards;
+    }
+
+    .hero-book-label {
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.55s forwards;
+    }
+
+    .hero-book-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--accent-gold);
+      margin-bottom: 2rem;
+      letter-spacing: 0.03em;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.65s forwards;
+    }
+
+    .hero-rule {
+      width: 40px;
+      height: 1px;
+      background: var(--accent-gold);
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.75s forwards;
+    }
+
+    .hero-tagline {
+      font-family: var(--font-heading);
+      font-size: clamp(1rem, 1.8vw, 1.3rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: 2.8rem;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.85s forwards;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      opacity: 0;
+      animation: fadeUp 1s ease 1s forwards;
+    }
+
+    .hero-goodreads {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 1.5rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: color var(--transition);
+      opacity: 0;
+      animation: fadeUp 1s ease 1.1s forwards;
+    }
+
+    .hero-goodreads:hover {
+      color: var(--accent-gold);
+    }
+
+    .hero-goodreads svg {
+      width: 12px;
+      height: 12px;
+      fill: currentColor;
+    }
+
+    .hero-visual {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      opacity: 0;
+      animation: fadeIn 1.2s ease 0.6s forwards;
+    }
+
+    .hero-book-cover {
+      max-width: 260px;
+      width: 100%;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(201,169,110,0.12);
+      transition: transform var(--transition-slow), box-shadow var(--transition-slow);
+    }
+
+    .hero-book-cover:hover {
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 40px 100px rgba(0,0,0,0.8), 0 0 0 1px rgba(201,169,110,0.2);
+    }
+
+    .hero-author-credit {
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* ============================================================
+       SECTION DIVIDER
+    ============================================================ */
+    .section-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+    }
+
+    /* ============================================================
+       ABOUT DAVID
+    ============================================================ */
+    #about {
+      padding: 120px 0;
+      background: var(--bg-base);
+      position: relative;
+    }
+
+    #about::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .about-image-col {
+      position: relative;
+    }
+
+    .about-image-wrap {
+      position: relative;
+      display: inline-block;
+    }
+
+    .about-image-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -12px -12px 12px 12px;
+      border: 1px solid var(--border);
+      z-index: 0;
+    }
+
+    .about-image-wrap img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 380px;
+      filter: grayscale(20%) contrast(1.05);
+      transition: filter var(--transition-slow);
+    }
+
+    .about-image-wrap:hover img {
+      filter: grayscale(0%) contrast(1.0);
+    }
+
+    .about-text-col {
+      padding-top: 8px;
+    }
+
+    .about-text-col p {
+      font-size: 1.0rem;
+      line-height: 1.85;
+      color: var(--text-secondary);
+      margin-bottom: 1.4rem;
+    }
+
+    .about-text-col p:last-child {
+      margin-bottom: 0;
+    }
+
+    .about-text-col p.lead {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: var(--text-primary);
+      line-height: 1.65;
+    }
+
+    /* ============================================================
+       THE STORY
+    ============================================================ */
+    #story {
+      padding: 120px 0;
+      background: var(--bg-surface);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #story::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+    }
+
+    #story::after {
+      content: '';
+      position: absolute;
+      top: -200px;
+      right: -200px;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(42,95,127,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .story-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: start;
+    }
+
+    .story-lead {
+      font-family: var(--font-heading);
+      font-size: clamp(1.4rem, 2.5vw, 1.95rem);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--text-primary);
+      margin-bottom: 2.5rem;
+      border-left: 2px solid var(--accent-gold);
+      padding-left: 1.5rem;
+    }
+
+    .story-body p {
+      font-size: 0.975rem;
+      line-height: 1.9;
+      color: var(--text-secondary);
+      margin-bottom: 1.3rem;
+    }
+
+    .story-themes {
+      padding-top: 1.5rem;
+    }
+
+    .story-themes-label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .theme-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .theme-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--border-subtle);
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--text-secondary);
+      transition: color var(--transition);
+    }
+
+    .theme-item:first-child {
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .theme-item::before {
+      content: '';
+      display: block;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--accent-gold);
+      flex-shrink: 0;
+    }
+
+    /* ============================================================
+       CHARACTERS
+    ============================================================ */
+    #characters {
+      padding: 120px 0;
+      background: var(--bg-base);
+      position: relative;
+    }
+
+    #characters::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+    }
+
+    .characters-header {
+      text-align: center;
+      margin-bottom: 70px;
+    }
+
+    .characters-header .section-rule {
+      margin: 0 auto 0;
+    }
+
+    .characters-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .character-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      transition: border-color var(--transition), background var(--transition);
+      overflow: hidden;
+    }
+
+    .character-card:hover {
+      border-color: var(--border);
+      background: var(--bg-card-hover);
+    }
+
+    .character-card-header {
+      padding: 2.5rem 2rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1.2rem;
+    }
+
+    .character-portrait-wrap {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--border);
+      transition: border-color var(--transition), transform var(--transition);
+      flex-shrink: 0;
+    }
+
+    .character-card:hover .character-portrait-wrap {
+      border-color: var(--accent-gold-dim);
+      transform: scale(1.04);
+    }
+
+    .character-portrait-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      filter: grayscale(30%) contrast(1.05);
+      transition: filter var(--transition-slow);
+    }
+
+    .character-card:hover .character-portrait-wrap img {
+      filter: grayscale(0%) contrast(1.0);
+    }
+
+    .character-name {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--text-primary);
+      margin: 0;
+    }
+
+    .character-hook {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-style: italic;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .character-card-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      width: 100%;
+      padding: 0.8rem 2rem;
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      background: rgba(201,169,110,0.04);
+      border-top: 1px solid var(--border-subtle);
+      transition: background var(--transition), color var(--transition);
+    }
+
+    .character-card-toggle:hover {
+      background: rgba(201,169,110,0.1);
+    }
+
+    .character-card-toggle .toggle-icon {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .character-card-toggle .toggle-icon::before,
+    .character-card-toggle .toggle-icon::after {
+      content: '';
+      position: absolute;
+      background: var(--accent-gold);
+      transition: transform var(--transition), opacity var(--transition);
+    }
+
+    .character-card-toggle .toggle-icon::before {
+      width: 10px;
+      height: 1px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .character-card-toggle .toggle-icon::after {
+      width: 1px;
+      height: 10px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .character-card.expanded .toggle-icon::after {
+      transform: translate(-50%, -50%) rotate(90deg);
+      opacity: 0;
+    }
+
+    .character-card-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease, padding 0.3s ease;
+    }
+
+    .character-card.expanded .character-card-body {
+      max-height: 600px;
+    }
+
+    .character-card-body-inner {
+      padding: 2rem 2rem 1.5rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .character-card-body-inner p {
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      margin-bottom: 1.2rem;
+    }
+
+    .character-curiosity {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--text-primary);
+      border-left: 2px solid var(--accent-gold);
+      padding-left: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .character-cta {
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    /* ============================================================
+       PLACES
+    ============================================================ */
+    #places {
+      padding: 120px 0;
+      background: var(--bg-surface);
+      position: relative;
+    }
+
+    #places::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+    }
+
+    .places-header {
+      margin-bottom: 60px;
+    }
+
+    .places-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+    }
+
+    .place-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      padding: 2.8rem 2.8rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color var(--transition);
+    }
+
+    .place-panel:hover {
+      border-color: var(--border);
+    }
+
+    .place-panel::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 1px;
+      background: var(--accent-gold);
+      transition: width var(--transition-slow);
+    }
+
+    .place-panel:hover::before {
+      width: 80px;
+    }
+
+    .place-number {
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 1.2rem;
+      display: block;
+    }
+
+    .place-name {
+      font-family: var(--font-heading);
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--text-primary);
+      margin-bottom: 0.8rem;
+    }
+
+    .place-atmosphere {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--accent-gold-dim);
+      margin-bottom: 1.2rem;
+    }
+
+    .place-description {
+      font-size: 0.9rem;
+      line-height: 1.85;
+      color: var(--text-secondary);
+    }
+
+    .place-panel-wide {
+      grid-column: span 2;
+    }
+
+    /* ============================================================
+       THE BOOK
+    ============================================================ */
+    #book {
+      padding: 120px 0;
+      background: var(--bg-base);
+      position: relative;
+    }
+
+    #book::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+    }
+
+    .book-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .book-cover-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .book-cover-img {
+      max-width: 300px;
+      width: 100%;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(201,169,110,0.1);
+      transition: transform var(--transition-slow), box-shadow var(--transition-slow);
+    }
+
+    .book-cover-img:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 40px 100px rgba(0,0,0,0.8), 0 0 0 1px rgba(201,169,110,0.2);
+    }
+
+    .book-title-display {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.15;
+      color: var(--text-primary);
+      margin-bottom: 0.4rem;
+    }
+
+    .book-author-display {
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .book-description p {
+      font-size: 0.975rem;
+      line-height: 1.9;
+      color: var(--text-secondary);
+      margin-bottom: 1.3rem;
+    }
+
+    .book-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 2.5rem;
+    }
+
+    /* ============================================================
+       READING ROOM
+    ============================================================ */
+    #reading {
+      padding: 120px 0;
+      background: var(--bg-surface);
+      position: relative;
+    }
+
+    #reading::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+    }
+
+    .reading-header {
+      text-align: center;
+      max-width: var(--max-w-text);
+      margin: 0 auto 60px;
+    }
+
+    .reading-header p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+    }
+
+    .chapters-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .chapter-accordion {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      overflow: hidden;
+      transition: border-color var(--transition);
+    }
+
+    .chapter-accordion:hover {
+      border-color: var(--border);
+    }
+
+    .chapter-trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 2rem 2.5rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      transition: background var(--transition);
+    }
+
+    .chapter-trigger:hover {
+      background: rgba(255,255,255,0.02);
+    }
+
+    .chapter-trigger-left {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .chapter-num {
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+    }
+
+    .chapter-title-label {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--text-primary);
+    }
+
+    .chapter-opening {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .chapter-icon {
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: border-color var(--transition), background var(--transition);
+    }
+
+    .chapter-trigger:hover .chapter-icon,
+    .chapter-accordion.open .chapter-icon {
+      border-color: var(--accent-gold);
+      background: rgba(201,169,110,0.08);
+    }
+
+    .chapter-icon svg {
+      width: 12px;
+      height: 12px;
+      stroke: var(--accent-gold);
+      fill: none;
+      transition: transform var(--transition);
+    }
+
+    .chapter-accordion.open .chapter-icon svg {
+      transform: rotate(180deg);
+    }
+
+    .chapter-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.6s ease;
+    }
+
+    .chapter-accordion.open .chapter-body {
+      max-height: 9000px;
+    }
+
+    .chapter-body-inner {
+      padding: 0 2.5rem 3rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .chapter-text {
+      max-width: var(--max-w-text);
+      margin: 2.5rem auto 0;
+    }
+
+    .chapter-text p {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      line-height: 1.95;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+    }
+
+    .chapter-text p.chapter-first-para::first-letter {
+      font-size: 4rem;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      float: left;
+      line-height: 0.75;
+      margin: 0.1em 0.08em 0 0;
+      color: var(--accent-gold);
+    }
+
+    .chapter-close {
+      display: flex;
+      justify-content: center;
+      margin-top: 2.5rem;
+    }
+
+    /* ============================================================
+       CHAPTER AMAZON CTA BLOCK
+    ============================================================ */
+    .chapter-amazon-cta {
+      max-width: var(--max-w-text);
+      margin: 3rem auto 0;
+      padding: 2.8rem 3rem;
+      background: var(--bg-raised);
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .chapter-amazon-cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+    }
+
+    .chapter-amazon-cta-eyebrow {
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .chapter-amazon-cta-heading {
+      font-family: var(--font-heading);
+      font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--text-primary);
+      line-height: 1.35;
+      margin-bottom: 1rem;
+    }
+
+    .chapter-amazon-cta-body {
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .chapter-amazon-cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .chapter-amazon-cta-note {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+    }
+
+    /* ============================================================
+       LITERARY VOICES
+    ============================================================ */
+    #voices {
+      padding: 120px 0;
+      background: var(--bg-raised);
+      position: relative;
+    }
+
+    #voices::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+    }
+
+    .voices-header {
+      text-align: center;
+      margin-bottom: 70px;
+    }
+
+    .voices-header .section-rule {
+      margin: 0 auto;
+    }
+
+    .voices-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .voice-block {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      padding: 3rem 3rem;
+      position: relative;
+      transition: border-color var(--transition);
+    }
+
+    .voice-block:hover {
+      border-color: var(--border);
+    }
+
+    .voice-block::before {
+      content: '\201C';
+      position: absolute;
+      top: 1.5rem;
+      left: 2.5rem;
+      font-family: var(--font-heading);
+      font-size: 5rem;
+      color: rgba(201,169,110,0.12);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .voice-quote {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.7;
+      color: var(--text-primary);
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .voice-name {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: var(--accent-gold);
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .voice-credential {
+      font-size: 0.75rem;
+      font-weight: 300;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .voice-expand-btn {
+      margin-top: 1.5rem;
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0;
+      transition: gap var(--transition);
+    }
+
+    .voice-expand-btn:hover {
+      gap: 0.8rem;
+    }
+
+    .voice-expand-btn svg {
+      width: 10px;
+      height: 10px;
+      stroke: var(--accent-gold);
+      fill: none;
+      transition: transform var(--transition);
+    }
+
+    .voice-expand-btn.open svg {
+      transform: rotate(180deg);
+    }
+
+    .voice-full {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+    }
+
+    .voice-full.open {
+      max-height: 2000px;
+    }
+
+    .voice-full-inner {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .voice-full-inner p {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-style: italic;
+      line-height: 1.75;
+      color: var(--text-secondary);
+      margin-bottom: 1.2rem;
+    }
+
+    /* ============================================================
+       CONTACT
+    ============================================================ */
+    #contact {
+      padding: 120px 0;
+      background: var(--bg-base);
+      position: relative;
+    }
+
+    #contact::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+    }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-text p {
+      font-size: 0.975rem;
+      line-height: 1.9;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-email-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      color: var(--accent-gold);
+      transition: color var(--transition);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.3rem;
+      margin-top: 0.5rem;
+    }
+
+    .contact-email-link:hover {
+      color: #d4b483;
+      border-bottom-color: var(--accent-gold);
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-group label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 300;
+      padding: 1rem 1.2rem;
+      border-radius: 0;
+      outline: none;
+      transition: border-color var(--transition);
+      width: 100%;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--text-muted);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent-gold-dim);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 150px;
+      line-height: 1.7;
+    }
+
+    .form-note {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: -0.5rem;
+    }
+
+    .form-success {
+      display: none;
+      padding: 1.2rem 1.5rem;
+      background: rgba(201,169,110,0.08);
+      border: 1px solid var(--border);
+      color: var(--accent-gold);
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    #footer {
+      padding: 60px 0 40px;
+      background: #070707;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1.5rem;
+    }
+
+    .footer-name {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--text-primary);
+    }
+
+    .footer-book {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .footer-tagline {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .footer-email {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      transition: color var(--transition);
+    }
+
+    .footer-email:hover {
+      color: var(--accent-gold);
+    }
+
+    .footer-divider {
+      width: 1px;
+      height: 30px;
+      background: var(--border-subtle);
+    }
+
+    .footer-copyright {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .footer-row {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 1024px) {
+      .container { padding: 0 28px; }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 50px;
+        padding: 120px 28px 70px;
+        text-align: center;
+      }
+
+      .hero-buttons { justify-content: center; }
+      .hero-rule { margin: 0 auto 2rem; }
+      .hero-visual { align-items: center; }
+
+      .about-inner { grid-template-columns: 1fr; gap: 50px; }
+      .about-image-wrap { display: flex; justify-content: center; }
+      .about-image-wrap img { max-width: 300px; }
+
+      .story-inner { grid-template-columns: 1fr; gap: 50px; }
+      .book-inner { grid-template-columns: 1fr; gap: 50px; text-align: center; }
+      .book-cover-col { align-items: center; }
+      .book-buttons { justify-content: center; }
+      .contact-inner { grid-template-columns: 1fr; gap: 50px; }
+      .voices-grid { grid-template-columns: 1fr; gap: 30px; }
+      .characters-grid { grid-template-columns: repeat(2, 1fr); }
+      .places-grid { grid-template-columns: 1fr; }
+      .place-panel-wide { grid-column: span 1; }
+      .chapter-amazon-cta { padding: 2rem 2rem; }
+    }
+
+    @media (max-width: 768px) {
+      #site-nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .container { padding: 0 20px; }
+
+      #hero, #about, #story, #characters, #places, #book, #reading, #voices, #contact {
+        padding: 80px 0;
+      }
+
+      .hero-title { font-size: clamp(3rem, 11vw, 5rem); }
+      .characters-grid { grid-template-columns: 1fr; }
+      .chapter-trigger { padding: 1.5rem 1.5rem; }
+      .chapter-body-inner { padding: 0 1.5rem 2rem; }
+      .voice-block { padding: 2rem 1.8rem; }
+      .place-panel { padding: 2rem 2rem; }
+      .about-image-wrap::before { display: none; }
+      .chapter-amazon-cta { padding: 2rem 1.5rem; }
+      .chapter-amazon-cta-buttons { flex-direction: column; align-items: center; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-inner { padding: 110px 20px 60px; }
+      .hero-buttons { flex-direction: column; align-items: center; }
+      .btn { justify-content: center; }
+      .book-buttons { flex-direction: column; align-items: center; }
+      .footer-row { flex-direction: column; gap: 1rem; }
+      .footer-divider { width: 30px; height: 1px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+  ============================================================ -->
+  <nav id="site-nav" role="navigation" aria-label="Primary navigation">
+    <a href="#hero" class="nav-logo" aria-label="David Stringer — return to top">DAVID STRINGER</a>
+
+    <ul class="nav-links" role="list">
+      <li><a href="#about">About</a></li>
+      <li><a href="#story">Story</a></li>
+      <li><a href="#characters">Characters</a></li>
+      <li><a href="#places">Places</a></li>
+      <li><a href="#book">The Book</a></li>
+      <li><a href="#reading">Read</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <button class="nav-hamburger" id="hamburger-btn" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open navigation menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <ul class="nav-mobile" id="mobile-nav" role="list" aria-label="Mobile navigation">
+    <li><a href="#about" class="mobile-nav-link">About</a></li>
+    <li><a href="#story" class="mobile-nav-link">Story</a></li>
+    <li><a href="#characters" class="mobile-nav-link">Characters</a></li>
+    <li><a href="#places" class="mobile-nav-link">Places</a></li>
+    <li><a href="#book" class="mobile-nav-link">The Book</a></li>
+    <li><a href="#reading" class="mobile-nav-link">Read</a></li>
+    <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+  </ul>
+
+  <main>
+
+    <!-- ============================================================
+         HERO
+    ============================================================ -->
+    <section id="hero" aria-label="Introduction">
+      <div class="hero-bg" aria-hidden="true">
+        <div class="hero-horizon"></div>
+      </div>
+      <div class="hero-inner">
+        <div class="hero-text">
+          <span class="hero-eyebrow">Australian Literary Fiction</span>
+          <h1 class="hero-title">DAVID<br>STRINGER</h1>
+          <span class="hero-book-label">Author of</span>
+          <span class="hero-book-title">Islands of the Heart</span>
+          <div class="hero-rule" aria-hidden="true"></div>
+          <p class="hero-tagline">"Where memory, belonging and the Pacific meet."</p>
+          <div class="hero-buttons">
+            <a
+              href="https://www.amazon.com/Islands-Heart-David-Stringer-ebook/dp/B008TEFY64"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-primary"
+              aria-label="Discover Islands of the Heart on Amazon (opens in new tab)"
+            >Discover the Book</a>
+            <a href="#reading" class="btn btn-outline">Read the First Chapter</a>
+          </div>
+          <a
+            href="https://www.goodreads.com/book/show/15825211-islands-of-the-heart"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hero-goodreads"
+            aria-label="View Islands of the Heart on Goodreads (opens in new tab)"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z"/></svg>
+            Also on Goodreads
+          </a>
+        </div>
+        <div class="hero-visual">
+          <a
+            href="https://www.amazon.com/Islands-Heart-David-Stringer-ebook/dp/B008TEFY64"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="View Islands of the Heart on Amazon"
+          >
+            <img
+              src="ISLAND OF THE HEART.webp"
+              alt="Islands of the Heart — novel by David Stringer"
+              class="hero-book-cover"
+            />
+          </a>
+          <span class="hero-author-credit">David Stringer</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <!-- ============================================================
+         ABOUT DAVID
+    ============================================================ -->
+    <section id="about" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="about-inner">
+
+          <div class="about-image-col reveal">
+            <div class="about-image-wrap">
+              <img
+                src="me cool.jpg"
+                alt="David Stringer, Australian literary fiction author"
+              />
+            </div>
+          </div>
+
+          <div class="about-text-col reveal">
+            <span class="section-label">The Author</span>
+            <h2 class="section-heading" id="about-heading">David Stringer</h2>
+            <hr class="section-rule" aria-hidden="true" />
+
+            <p class="lead">Now at 75, I can see that my life has been a journey to uncover the truth of our shared reality here on Earth.</p>
+
+            <p>On this journey I have had to drop many illusions and delusions, studies to become a doctor, training to be an athlete, the urge to be forever young. To search for my identity in places, achievements and loved ones rather than within my own beingness. I have had to strip myself bare to the only thing that could not be negated, our shared human essential spirituality.</p>
+
+            <p>Islands of the Heart was born of this journey of discovery. I am not Wolf, but he was real, he did exist and I knew him. He and his own particular journey fascinated me; the people he hurt and the women who loved him fascinated me; the Pacific, and peoples of the Pacific fascinate me; the evil depths and noble summits of human behaviour fascinate me.</p>
+
+            <p>I hope I have been able to communicate this in Islands of the Heart. I pray you enjoy the journey, it is all I have to offer.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <!-- ============================================================
+         THE STORY
+    ============================================================ -->
+    <section id="story" aria-labelledby="story-heading">
+      <div class="container">
+        <div class="story-inner">
+
+          <div class="story-main reveal">
+            <span class="section-label">The Novel</span>
+            <h2 class="section-heading" id="story-heading">Islands of the Heart</h2>
+            <hr class="section-rule" aria-hidden="true" />
+
+            <blockquote class="story-lead">
+              Across the mountains and lakes of New Zealand, the islands of Samoa, and the memories of East Timor, Islands of the Heart follows Wolf as the past refuses to remain buried.
+            </blockquote>
+
+            <div class="story-body">
+              <p>Some journeys begin with a choice. Others begin with a weight something carried so long it has shaped the bones of the person carrying it. For Wolf, the journey north is both an escape and a reckoning, moving through the landscapes he knows and the silences he has never fully broken.</p>
+
+              <p>Islands of the Heart moves between the blue-gold beauty of Central Otago, the warmth of Samoan family life, and the shadow of East Timor, a place Wolf has spent years trying not to remember. The novel weaves together Maori, Samoan and Palagi lives, exploring what happens when those worlds collide, break, and sometimes find their way back toward each other.</p>
+
+              <p>This is a novel about love and the violence love cannot always prevent. About belonging and the cost of running from it. About the weight of cultural identity, the pull of family, and the question of whether forgiveness is something the living can extend to themselves.</p>
+            </div>
+          </div>
+
+          <div class="story-themes reveal">
+            <span class="story-themes-label">Themes</span>
+            <div class="theme-list" role="list">
+              <div class="theme-item" role="listitem">Memory</div>
+              <div class="theme-item" role="listitem">Belonging</div>
+              <div class="theme-item" role="listitem">Identity</div>
+              <div class="theme-item" role="listitem">Violence</div>
+              <div class="theme-item" role="listitem">Love</div>
+              <div class="theme-item" role="listitem">Family</div>
+              <div class="theme-item" role="listitem">Forgiveness</div>
+              <div class="theme-item" role="listitem">Cultural identity</div>
+              <div class="theme-item" role="listitem">The Pacific</div>
+              <div class="theme-item" role="listitem">The weight of the past</div>
+              <div class="theme-item" role="listitem">Human behaviour</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <!-- ============================================================
+         CHARACTERS
+    ============================================================ -->
+    <section id="characters" aria-labelledby="characters-heading">
+      <div class="container">
+
+        <div class="characters-header reveal">
+          <span class="section-label">The People</span>
+          <h2 class="section-heading" id="characters-heading">Meet the Characters</h2>
+          <hr class="section-rule" aria-hidden="true" />
+        </div>
+
+        <div class="characters-grid" id="characters-grid">
+
+          <!-- WOLF -->
+          <article class="character-card reveal" aria-label="Character: Wolf">
+            <div class="character-card-header">
+              <div class="character-portrait-wrap">
+                <img src="wolf.png.jpg" alt="Wolf — central character of Islands of the Heart" />
+              </div>
+              <h3 class="character-name">Wolf</h3>
+              <p class="character-hook">"The soldier who came home carrying a war he couldn't leave behind."</p>
+            </div>
+            <button class="character-card-toggle" aria-expanded="false" aria-controls="wolf-body">
+              Explore Character
+              <span class="toggle-icon" aria-hidden="true"></span>
+            </button>
+            <div class="character-card-body" id="wolf-body" role="region">
+              <div class="character-card-body-inner">
+                <p>Wolf is at the centre of the novel, a powerful and complicated man shaped by military experience, family, love and memories he has never fully escaped. His journey takes him across New Zealand and back toward the people and places connected to his past.</p>
+                <p>He is not a villain, but he is not without fault. He is someone the reader will recognise: a person capable of great loyalty and great damage in the same breath.</p>
+                <blockquote class="character-curiosity">"But what really happened in Timor, and can Wolf ever escape the man he became there?"</blockquote>
+                <span class="character-cta">Discover more in Islands of the Heart</span>
+                <a
+                  href="https://www.amazon.com/Islands-Heart-David-Stringer-ebook/dp/B008TEFY64"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-ghost"
+                  aria-label="Continue the journey — discover Islands of the Heart on Amazon"
+                >Continue the Journey</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- TANIA -->
+          <article class="character-card reveal" aria-label="Character: Tania">
+            <div class="character-card-header">
+              <div class="character-portrait-wrap">
+                <img src="tania.jpg" alt="Tania — character from Islands of the Heart" />
+              </div>
+              <h3 class="character-name">Tania</h3>
+              <p class="character-hook">"The woman who loves Wolf, but knows there are things he refuses to tell her."</p>
+            </div>
+            <button class="character-card-toggle" aria-expanded="false" aria-controls="tania-body">
+              Explore Character
+              <span class="toggle-icon" aria-hidden="true"></span>
+            </button>
+            <div class="character-card-body" id="tania-body" role="region">
+              <div class="character-card-body-inner">
+                <p>Tania loves Wolf deeply, yet his silences and sudden journey north leave her questioning what she truly knows about the man beside her. She holds the domestic centre of the novel, its quieter grief and its deepest patience.</p>
+                <p>Her presence reminds us that the people closest to those carrying secrets often carry the weight of those secrets too, without ever being given the words that explain them.</p>
+                <blockquote class="character-curiosity">"How much can love survive when the person you love refuses to tell you the truth?"</blockquote>
+                <span class="character-cta">Discover more in Islands of the Heart</span>
+                <a
+                  href="https://www.amazon.com/Islands-Heart-David-Stringer-ebook/dp/B008TEFY64"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-ghost"
+                >Continue the Journey</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- LIN -->
+          <article class="character-card reveal" aria-label="Character: Lin">
+            <div class="character-card-header">
+              <div class="character-portrait-wrap">
+                <img src="lin.png.jpg" alt="Lin — character from Islands of the Heart" />
+              </div>
+              <h3 class="character-name">Lin</h3>
+              <p class="character-hook">"A family bond shaped by love, loss and a past Wolf cannot simply leave behind."</p>
+            </div>
+            <button class="character-card-toggle" aria-expanded="false" aria-controls="lin-body">
+              Explore Character
+              <span class="toggle-icon" aria-hidden="true"></span>
+            </button>
+            <div class="character-card-body" id="lin-body" role="region">
+              <div class="character-card-body-inner">
+                <p>Lin is Wolf's cousin, though their relationship is closer to brother and sister. Half Chinese and half Samoan, she carries profound memories of the past and a painful connection to Benny, her brother who died mysteriously in East Timor.</p>
+                <p>Lin's dual heritage places her at the intersection of the cultural worlds the novel explores. She sees Wolf clearly, perhaps more clearly than anyone and what she knows forms one of the novel's quiet, accumulating pressures.</p>
+                <blockquote class="character-curiosity">"What does Lin know about Benny, Bruce and Timor that Wolf has spent years trying to keep buried?"</blockquote>
+                <span class="character-cta">Discover more in Islands of the Heart</span>
+                <a
+                  href="https://www.amazon.com/Islands-Heart-David-Stringer-ebook/dp/B008TEFY64"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-ghost"
+                >Continue the Journey</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- PEPE -->
+          <article class="character-card reveal" aria-label="Character: Pepe">
+            <div class="character-card-header">
+              <div class="character-portrait-wrap">
+                <img src="pepe.png.jpg" alt="Pepe — character from Islands of the Heart" />
+              </div>
+              <h3 class="character-name">Pepe</h3>
+              <p class="character-hook">"A mother's love reaching across distance, memory and family."</p>
+            </div>
+            <button class="character-card-toggle" aria-expanded="false" aria-controls="pepe-body">
+              Explore Character
+              <span class="toggle-icon" aria-hidden="true"></span>
+            </button>
+            <div class="character-card-body" id="pepe-body" role="region">
+              <div class="character-card-body-inner">
+                <p>Pepe represents one of the novel's strongest connections to family, Samoa and belonging. Her relationship with Wolf carries both tenderness and the weight of everything that has happened between them: giving him life; saving his life.</p>
+                <p>In a novel full of people running from their past, Pepe is someone who has stayed, who has held the memory of what was and the hope of what might still be.</p>
+                <blockquote class="character-curiosity">"Can a mother's love reach a son who has spent years running from his own past?"</blockquote>
+                <span class="character-cta">Discover more in Islands of the Heart</span>
+                <a
+                  href="https://www.amazon.com/Islands-Heart-David-Stringer-ebook/dp/B008TEFY64"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-ghost"
+                >Continue the Journey</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- STEVEN -->
+          <article class="character-card reveal" aria-label="Character: Steven">
+            <div class="character-card-header">
+              <div class="character-portrait-wrap">
+                <img src="steven.png.jpg" alt="Steven — character from Islands of the Heart" />
+              </div>
+              <h3 class="character-name">Steven</h3>
+              <p class="character-hook">"A father whose ideas about life have shaped Wolf in ways he may not fully understand."</p>
+            </div>
+            <button class="character-card-toggle" aria-expanded="false" aria-controls="steven-body">
+              Explore Character
+              <span class="toggle-icon" aria-hidden="true"></span>
+            </button>
+            <div class="character-card-body" id="steven-body" role="region">
+              <div class="character-card-body-inner">
+                <p>Steven is Wolf's father and an important influence on his ideas about New Zealand, solitude, identity and the meaning of a life. His presence in the novel and the distance between what a father intends to teach and what a son absorbs is one of its quieter threads.</p>
+                <p>He is a man shaped by his own landscape, his own denial of a toxic past, and the particular New Zealand way of standing apart while still belonging.</p>
+                <blockquote class="character-curiosity">"What happens when a father finally has to confront the life he helped create?"</blockquote>
+                <span class="character-cta">Discover more in Islands of the Heart</span>
+                <a
+                  href="https://www.amazon.com/Islands-Heart-David-Stringer-ebook/dp/B008TEFY64"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-ghost"
+                >Continue the Journey</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- UNCLE FIKA / PASIFIKA -->
+          <article class="character-card reveal" aria-label="Character: Uncle Fika">
+            <div class="character-card-header">
+              <div class="character-portrait-wrap">
+                <img src="unclefika.png.jpg" alt="Uncle Fika — character from Islands of the Heart" />
+              </div>
+              <h3 class="character-name">Uncle Fika</h3>
+              <p class="character-hook">"An old Samoan warrior who understands that no one truly stands alone."</p>
+            </div>
+            <button class="character-card-toggle" aria-expanded="false" aria-controls="fika-body">
+              Explore Character
+              <span class="toggle-icon" aria-hidden="true"></span>
+            </button>
+            <div class="character-card-body" id="fika-body" role="region">
+              <div class="character-card-body-inner">
+                <p>Uncle Fika is a fierce, humorous and deeply loyal presence in Wolf's life. His connection to Samoa, family, strength and belonging gives the novel one of its most powerful perspectives.</p>
+                <p>He is a man who has lived fully and seen much and who carries the Samoan understanding that identity is not individual, that belonging is not optional, and that love expressed as toughness is still love.</p>
+                <blockquote class="character-curiosity">"What does Fika understand about Wolf that Wolf himself has spent years refusing to see?"</blockquote>
+                <span class="character-cta">Discover more in Islands of the Heart</span>
+                <a
+                  href="https://www.amazon.com/Islands-Heart-David-Stringer-ebook/dp/B008TEFY64"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-ghost"
+                >Continue the Journey</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <!-- ============================================================
+         PLACES
+    ============================================================ -->
+    <section id="places" aria-labelledby="places-heading">
+      <div class="container">
+
+        <div class="places-header reveal">
+          <span class="section-label">The Landscape</span>
+          <h2 class="section-heading" id="places-heading">Meet the Places</h2>
+          <hr class="section-rule" aria-hidden="true" />
+          <p style="font-size:0.975rem;line-height:1.85;color:var(--text-secondary);max-width:560px;">In Islands of the Heart, place is not backdrop. It is memory. Each landscape carries the emotional world of the story.</p>
+        </div>
+
+        <div class="places-grid">
+
+          <div class="place-panel reveal">
+            <span class="place-number">01</span>
+            <h3 class="place-name">New Zealand</h3>
+            <p class="place-atmosphere">"Mountains, lakes, roads and memories."</p>
+            <p class="place-description">New Zealand is the novel's bones, its cold clarity and wide open distances giving Wolf space to move, and space to avoid. From Queenstown to Arrowtown, from Lake Wakatipu to the high country beyond Wanaka, the South Island holds its beauty without comfort. It is a landscape that asks who you are and does not wait patiently for an answer.</p>
+          </div>
+
+          <div class="place-panel reveal">
+            <span class="place-number">02</span>
+            <h3 class="place-name">Samoa</h3>
+            <p class="place-atmosphere">"Family, belonging and the pull of the islands."</p>
+            <p class="place-description">Where New Zealand is solitude, Samoa is presence. The islands represent what Wolf has run from and what continues to call him, family, warmth, the Samoan understanding that a person is not separate from their people. The Pacific is not merely a setting here. It is a living argument about how a life should be lived.</p>
+          </div>
+
+          <div class="place-panel reveal">
+            <span class="place-number">03</span>
+            <h3 class="place-name">Central Otago</h3>
+            <p class="place-atmosphere">"A landscape that burns its blues, browns and golds into the heart."</p>
+            <p class="place-description">Lake Hawea, Wanaka, the high tussock country, Central Otago is one of the most visually dramatic landscapes on earth, and the novel uses it fully. This is where Steven's soul lives, that Wolf has dreamed of all his life, where the particular New Zealand idea of the self-sufficient individual finds its clearest expression. Beautiful, austere and unforgiving.</p>
+          </div>
+
+          <div class="place-panel reveal">
+            <span class="place-number">04</span>
+            <h3 class="place-name">East Timor</h3>
+            <p class="place-atmosphere">"A place Wolf has spent years trying not to remember."</p>
+            <p class="place-description">East Timor does not appear on the page in the conventional sense, it arrives through Wolf. Through what he won't say. Through what others know happened there. It is the novel's dark gravity: the event or events that cannot be undone and that explain, without excusing, the man Wolf has become. Its presence is felt in every chapter even when it is not named.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <!-- ============================================================
+         THE BOOK
+    ============================================================ -->
+    <section id="book" aria-labelledby="book-heading">
+      <div class="container">
+        <div class="book-inner">
+
+          <div class="book-cover-col reveal">
+            <img
+              src="ISLAND OF THE HEART.webp"
+              alt="Islands of the Heart — book cover"
+              class="book-cover-img"
+            />
+          </div>
+
+          <div class="book-text-col reveal">
+            <span class="section-label">The Book</span>
+            <h2 class="book-title-display" id="book-heading">Islands of the Heart</h2>
+            <p class="book-author-display">By David Stringer</p>
+            <hr class="section-rule" aria-hidden="true" />
+
+            <div class="book-description">
+              <p>Islands of the Heart is a literary novel set across the South Island of New Zealand and the islands of Samoa, moving through the lives of Maori, Samoan and Palagi characters whose worlds collide in moments of love, violence, tenderness and cultural reckoning.</p>
+
+              <p>At its centre is Wolf, a man shaped by the land, by family and by the events of East Timor. His journey north becomes an unwilling confrontation with everything he has tried to leave behind: the people who loved him, the people he hurt and the question of whether a man can ever truly outrun his own history.</p>
+
+              <p>The novel explores Samoan family life and belonging, the particular isolation of the New Zealand high country, and the way cultural identity, Maori, Samoan, Palagi forms and fractures under the pressures of modern life. It is a novel about the evil depths and the noble summits of human behaviour, written with compassion and unflinching honesty.</p>
+            </div>
+
+            <div class="book-buttons">
+              <a
+                href="https://www.amazon.com/Islands-Heart-David-Stringer-ebook/dp/B008TEFY64"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary"
+                aria-label="Discover Islands of the Heart on Amazon (opens in new tab)"
+              >Discover on Amazon</a>
+              <a
+                href="https://www.goodreads.com/book/show/15825211-islands-of-the-heart"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-outline"
+                aria-label="View Islands of the Heart on Goodreads (opens in new tab)"
+              >Goodreads</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <!-- ============================================================
+         READING ROOM — PROLOGUE: SUNDAY MORNING
+    ============================================================ -->
+    <section id="reading" aria-labelledby="reading-heading">
+      <div class="container">
+
+        <div class="reading-header reveal">
+          <span class="section-label">Reading Room</span>
+          <h2 class="section-heading" id="reading-heading">Read the Opening Prologue</h2>
+          <hr class="section-rule" aria-hidden="true" style="margin:0 auto 2rem;" />
+          <p>Begin the journey. The opening prologue of Islands of the Heart is available to read here in full. When you reach the end, the rest of the novel awaits on Amazon.</p>
+        </div>
+
+        <div class="chapters-list">
+
+          <!-- PROLOGUE: SUNDAY MORNING -->
+          <div class="chapter-accordion reveal" id="chapter-one">
+            <button
+              class="chapter-trigger"
+              aria-expanded="false"
+              aria-controls="chapter-one-body"
+              id="chapter-one-trigger"
+            >
+              <div class="chapter-trigger-left">
+                <span class="chapter-num">Prologue</span>
+                <span class="chapter-title-label">Sunday Morning</span>
+                <span class="chapter-opening">Click to read the opening prologue</span>
+              </div>
+              <div class="chapter-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+            </button>
+
+            <div class="chapter-body" id="chapter-one-body" role="region" aria-labelledby="chapter-one-trigger">
+              <div class="chapter-body-inner">
+
+                <!-- ============================================================
+                     PROLOGUE TEXT — SUNDAY MORNING
+                     Exact text as supplied by the author, preserved in full.
+                ============================================================ -->
+                <div class="chapter-text">
+
+                  <p class="chapter-first-para">Tania slammed the door shut on the bastard's back. That broad muscular back sporting his beloved SAMOA tattoo. She rushed to the window, drawn to him even now, as a sudden hush rippled through the surrounding apartments full of students awakening from last night. An expectant hush, anticipating the scream of insults, the smash and tinkle of things thrown…shards of a Saturday night becoming Sunday.</p>
+
+                  <p>She watched as he ducked his big blond head to exit from the entrance way below. He paused amid the weekend detritus of beer bottles and slimy used condoms, cupped those huge hands to light a cigarette. She bitterly admired the set of his shoulders and lean waist, that fighter's quickness of head and eye; that physical power, which besides his broad nose, (and his tatts), was the only clue to Samoan blood. The students started up once more, disappointed, and she watched as he crossed the street to his battered red Toyota.</p>
+
+                  <p>Wolf caught her by surprise as he turned and scanned with trained, cold-blue eyes and she froze behind the sliver of open curtain until he sat into the car, fiddled a brief moment with something from his pocket, then drove away up the street – gone upon his mysterious journey. A shiver ran through her body, for she knew the darkness he could return to, what he was capable of, and she ran to the double bed in one corner of their poky apartment and threw herself upon it. Through thin walls she could hear the muffled thumps and shouts of the students perhaps enjoying some hair of last night's dog; but thumps and shouts can have a darker side, and noises behind walls had once been footsteps in a hallway, the push of a bedroom door that sucked the breath from her shaking young body…their shaking young bodies. And she wept, because the man she had chosen to protect her was leaving once again.</p>
+
+                  <p>Wolf lit his cigarette and gazed round slowly at an insipid Dunedin morning, sensing no menace. Here there would be no tell-tale flash of sun catching gun sight, nor the sudden silence of the jungle in that moment of death; not here in this broken stone block of Scotland rebuilt in New Zealand's deep south. He spat the day's first taste of cigarette into the rubbish at his feet and crossed the street. Reaching his car he turned and glanced up at a second-storey window in the squat grey block those smart-arse students named Lubyanka. He scanned in the way of a man whose life, and the lives of others, once depended on alertness, but the window was silent; behind that window was Tania, his sweet Maori girl, his brown sugar…and for just a brief moment, his heart ached. His eyes flashed at a quick flicker of curtain – did he see her face? But he shuddered and turned away. There could be no going back.</p>
+
+                  <p>He sensed his old life was dead. His comfortable life in this quiet, mostly white city where almost no-one could challenge him physically. Where he could get on with forgetting about cradling Benny's broken head, the blood gushing by some foreign waterfall…until twenty-four hours ago when Lin had rung.</p>
+
+                  <p>'Wolf? It's Lin.' Her voice, as always, warm and soft. 'Can you speak?'</p>
+
+                  <p>'Lin babe, of course. Tarn's not here if that's what you mean. Wassup sis?'</p>
+
+                  <p>She was silent a moment then, very quietly, 'I know what happened in Timor.' He felt two emotions together savaging his guts – one he'd known only that once before in his life, cold fear; the other an old companion, burning anger.</p>
+
+                  <p>'Lin – what the fuck –'</p>
+
+                  <p>'Wolf, don't try to bully me. I know what happened.'</p>
+
+                  <p>Could she? Could she know everything? 'I'll come and see you…are you still –'</p>
+
+                  <p>'In Nelson. You should know – I've sent enough cards.'</p>
+
+                  <p>'It might take some time sis – I'll have to sort it with Tania.'</p>
+
+                  <p>'I'm not going anywhere brother. And Wolf – bring me Benny's letter.'</p>
+
+                  <p>He sat into the little car which groaned downwards under his weight, pulled a wallet out of his back pocket and fiddled awkwardly with thick fingers to retrieve two letters inside of it, one covered with bloody fingerprints, the other with little yellow butterflies, replaced both into his wallet and laid it in the glovebox. He thought then of his mother, Pepe, sender of butterflies, so very far away…and drove off with no backward glance, heading south for the highway into the distant haze of the heartland.</p>
+
+                  <p>Pepe turned her face into the warm dawn breeze blowing in from the Samoan sea; behind her roosters were crowing to the wakening village. It was her secret, this warm breath of the Pacific Ocean that sighed over the waves breaking on the coral reef. She had always been alone here at this time, before the sun arose to cook the day; even so long ago when she had turned a younger, happier face toward the sea. Now as the breeze teased and licked her copper-brown hair she sensed change approaching, a slight dread in her belly as if the wind were trying to warn her of danger. She had felt it nearly twenty years earlier, before Hurricane Ofa had torn into her village with enormous waves which ripped up the coral beds of the lagoon, ripped up the road and the beach, and shredded the coconut palms for miles inland. She shivered slightly, lifted up the polished bone necklace she had worn almost forty years and kissed it, then stood and began to walk back to the village.</p>
+
+                  <p>'Pepe, Pepe,' the children called as she returned, scuffing her bare toes in soft sand still cool from the night. Her secret dawn breeze had retreated into the ocean and her sense of foreboding eased – she was surrounded here by so much that was safe and enduring. For more than 2000 years her village had changed little. In the paranoid hustle of the modern world, Savaii, heart of Polynesia, was a faithful constant in her life. And yet….</p>
+
+                  <p>'Pepe, Pepe.' The children called and she looked up to see dark clouds sweeping in over the mountain. Her dear friend, Pasifika the boxer, stood watching her with his fierce eyes from the steps of the church; the grizzled old fighter was sweeping the grounds before worshippers arrived. It was his self-appointed chore, despite the breeze quickly re-scattering the debris about him. Men…she smiled sadly to herself. Around her the children laughed and danced as the approaching edge of the rain pockmarked the sand, and she knew the torrents of the mountainous interior would soon be rushing headlong over the waterfall and on to the sea, like a lover into the arms of her beloved. She recalled a time when she and Steven had been lovers here, and quietly whispered as the children danced:</p>
+
+                  <p><em>I hear you now in the rushing river, I smell you in the jungle steam. I taste you in the warm sea wind of the Savaii dawn…I feel you swimming in the ocean of my heart.</em></p>
+
+                  <p>Steven sat upright in a room still barricaded from the late morning sun. This night, like every night now, he had awoken in a scream that spewed the previous day's poison out into the dark world; another dead day regurgitated into the blackness. He moved painfully to sit on the edge of the bed, then stood up to draw the curtains open, feeling only fear and revulsion at the flood of sunlight. His stomach ached with knowing what the day would bring: loneliness, bitterness, regret. And later in the day, when even the warming haze of red wine would fail once again in its promise of oblivion, he would weep for loved ones who were dead or far away. His ice-cold princess, Lara, and grandson Jonny, living far away in Australia, his war-like son Wolf and shy, smiling Benny, his life so cruelly wasted in some Indonesian shit-hole. Pepe, always, dark and gentle Pepe, his only love. And Lin…. He shuddered.</p>
+
+                  <p>Yet tomorrow would be different, a sharper pang of fear reminded him. Tomorrow for the first time he would tell someone. Tell someone that his life was lived under rocks and in caves of his own making, that every night he awoke in a scream and every day he longed to find the guts to end it all. As he limped to the kitchen to unearth a cup he caught a quick glance at himself in a hall-way mirror – average height, average build, fair hair dulling to grey as fifty-eight approached. He smiled wanly – he was just a very average person…. But then, do average people do what he had done?</p>
+
+                  <p>Wolf hit Alexandra close to noon. It was one of those days where the sun bakes the bare brown hills which in turn bake the little town hunkered in their heat waves, and the people endure the heat knowing that when night falls the brown hills will crack open and spew it away into the vast black sky.</p>
+
+                  <p>'Hot day,' he nodded to the woman behind an espresso machine. He noticed she looked red-faced from the heat or blood pressure, or…maybe she'd just got hot at the sight of his six feet four inches of muscle. 'Flat white, two sugars please love.' He liked four sugars but was embarrassed to ask for them – tough guys shouldn't need sweet.</p>
+
+                  <p>'Hot enough,' she flustered, frothing coffee with steam and milk. 'Going far?'</p>
+
+                  <p>Her eyes looked slightly piggy because her face was puffed up from the heat, slowly cooking in the little inland town. Her helplessness hit him in a wave and he choked back the flippant thought, Far as you'll let me honey.</p>
+
+                  <p>'Arrowtown.' He handed over a five dollar note.</p>
+
+                  <p>'It'll be lovely now,' she crinkled her eyes at him, perhaps hoping that he might be that rare creature in her life, a man with gentleness towards women. 'You know, with the trees coming out of winter, the spring and all…I spent some time there once,' she said wistfully.</p>
+
+                  <p>'I've got to catch up with somebody there,' he confided to her. 'An old army buddy.'</p>
+
+                  <p>'Oh?' Her eyes lit up. So many ladies loved a soldier.</p>
+
+                  <p>'Yeah. We got quite a bit of catching up to do, me and ol' Bruce.' And he would catch that bastard, one way or another….</p>
+
+                  <p>'You should be there in a couple of hours or so – road's quiet today.'</p>
+
+                  <p>He took the lid off his coffee, began to drink it there with her. 'Might stay in Queenstown tonight. Go on to Arrowtown in the morning.'</p>
+
+                  <p>'Queenstown is so gorgeous,' she sighed.</p>
+
+                  <p>'You get there often?'</p>
+
+                  <p>'Now and then…first time was on my honeymoon…seems a long time ago now.' She stared out a small window, through cobwebs to the hot brown hills.</p>
+
+                  <p>Never one to waste time on food he finished his coffee, made the signs that said he was leaving.</p>
+
+                  <p>'Hope you have a nice trip,' she said.</p>
+
+                  <p>'Yeah. You have a nice day too.'</p>
+
+                  <p>'I'll try to.' She looked less swollen and flustered now. 'Goodbye.'</p>
+
+                  <p>'See you on my way back perhaps.' He walked for the door and opened it to a visible heat wave which rippled towards him from the bare hills and slapped him in the face….</p>
+
+                  <p>Crack! Crack! The second and third shots whiplash past his head as he hits the ground rolling, the peppery-sweet scent of bamboo mould in his nostrils. He gains some cover behind a small mound – anthill? Termite? Crack! He realizes he is screaming the drill 'Contact front! Man down!' In slow-motion time he sees the Alpha machine-gun crew make good cover to his right, it is Bruce and Benny, and Bruce's face is screaming at him to give the range and indication: 'RIT! Wolf! Give us the fucking RIT!'</p>
+
+                  <p>He has seen no muzzle flashes, he just knows they have that high ground. Crack! The air by his head is warped by a round burning through too close, too close, leaves and dirt kick up into his eyes and face from rounds that have found the range. He should fire off tracer but must keep down, screams above the noise 'Two hundred metres!! Immediate front on the high ground!!' Close to his ear a ripping burst rip – rip—rip as Bruce and Benny fire off the gimpy machinegun, the tracers arch gracefully onto the little hill and it explodes into splintering bamboo and puffs of earth as the heavy slugs flail the target. Voice screams from behind – 'Grenadiers use forty mill!'</p>
+
+                  <p>Wolf opens the grenade-launcher attached beneath his Steyr rifle, loads a gold-nosed grenade from his vest pocket, aims fires – Thonk! Sharp smell of burnt charge, ejects spent case, it burns hot on his wrist as it drops, reloads. Thonk! Thonk! to his left it is the dull metallic thump of someone else firing a grenade-launcher, it's Tai, the Bravo 2 gunner going for it, white teeth flashing he's laughing the big crazy Tongan he's fucking laughing, face made skull-like by his broken nose. The high ground is now a storm of steel and bamboo splinters, the flash and bang of grenades bursting Bang! Bang! Fucking beauty Tai right on target, eat that you little bastards. Then Crack! Crack! Close, too close. A ripping burst in his ear, Benny calmly firing off the gimpy, Bruce sighting through bino's, but this is coming from that hill, a fast ripping burst, and leaves and dirt sting into his face – the arseholes have a machine gun firing from high ground and he can tell from the sound it's a fast-firing Minimi. Him and Tai have used up all their grenades and Tai begins firing his Steyr, he has it on auto and the whole mag fires off in a quick burst the crazy bastard. How many of them are up there?? He's mad angry now, really fucking mad. Corporal screams 'Throw smoke!'</p>
+
+                  <p>He takes a smoke grenade from the outside pouch of his ammo vest, fires. Grenades curve out, gush rich purple smoke that billows like a theatre curtain in the air. 'Prepare to withdraw!'</p>
+
+                  <p>Say what? Say fucking what? And leave Tyson? Leave poor fucking Tyson?</p>
+
+                  <p>'I said withdraw!'</p>
+
+                  <p>Bruce and Benny look at him their eyes huge and black with adrenaline, faces fixed tight in war grins.</p>
+
+                  <p>'Let's go Wolf!' Benny heaves up the machine gun, careful of the red-hot barrel still smoking, begins to scamper.</p>
+
+                  <p>Corporal, shouting at Wolf. 'Wolf I fucking mean it! Withdraw!' Zip, zip, rounds are finding their way through the curtain of smoke. 'Now!'</p>
+
+                  <p>He leaps up, the Steyr a plastic toy in his huge hands – stops and turns to take a last long look towards Tyson's body.</p>
+
+                  <p>'Wolf!' It's Benny shouting, his face twisted in fear. 'Wolf!'</p>
+
+                  <p>Then there was only the shimmering haze, the jungle, the men trudging in a stunned sullen silence….and that heat wave slapping out of the bush, off the grass and out of those bare brown hills….</p>
+
+                  <p>'So how's the coffee here pal?' asked a pink-faced traveler shaking off the stiffness of long hours in a car.</p>
+
+                  <p>Wolf slowly focused on the man, seeing no-one he really wanted to converse with. 'OK,' he grunted and carried on to his car. There was a way to go yet, to drive out of these dry brown hills and into the lakes and mountains of the heartland. He was aware of Pink-face staring after him as if he thought he was an arsehole, but it didn't bother him because he didn't like the people down here much. They were either tourists or South Islanders, and both usually gave him the shits. He gunned the little Toyota and it blasted a puff of blue smoke into the heat haze of the main highway west, heading out of the barren lands and into the mountains.</p>
+
+                </div>
+                <!-- END PROLOGUE TEXT -->
+
+                <!-- Close button -->
+                <div class="chapter-close">
+                  <button class="btn btn-ghost chapter-close-btn" aria-label="Close Prologue">Close Prologue</button>
+                </div>
+
+                <!-- ================================================
+                     AMAZON CTA — END OF PROLOGUE
+                ================================================ -->
+                <div class="chapter-amazon-cta" role="complementary" aria-label="Continue reading on Amazon">
+                  <span class="chapter-amazon-cta-eyebrow">The journey continues</span>
+                  <h3 class="chapter-amazon-cta-heading">Wolf is only just beginning.<br>What happens next changes everything.</h3>
+                  <p class="chapter-amazon-cta-body">
+                    This is only the opening of Wolf's journey across New Zealand, Samoa and the long shadow of East Timor. The full novel is available now on Amazon — continue reading today.
+                  </p>
+                  <div class="chapter-amazon-cta-buttons">
+                    <a
+                      href="https://www.amazon.com/Islands-Heart-David-Stringer-ebook/dp/B008TEFY64"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="btn btn-primary"
+                      aria-label="Read the full novel — Islands of the Heart on Amazon (opens in new tab)"
+                    >Read the Full Novel on Amazon</a>
+                    <a
+                      href="https://www.goodreads.com/book/show/15825211-islands-of-the-heart"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="btn btn-outline"
+                      aria-label="View Islands of the Heart on Goodreads (opens in new tab)"
+                    >View on Goodreads</a>
+                  </div>
+                  <span class="chapter-amazon-cta-note">Islands of the Heart — David Stringer</span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <!-- END PROLOGUE -->
+
+        </div>
+
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <!-- ============================================================
+         LITERARY VOICES
+    ============================================================ -->
+    <section id="voices" aria-labelledby="voices-heading">
+      <div class="container">
+
+        <div class="voices-header reveal">
+          <span class="section-label">Endorsements</span>
+          <h2 class="section-heading" id="voices-heading">Literary Voices</h2>
+          <hr class="section-rule" aria-hidden="true" />
+        </div>
+
+        <div class="voices-grid">
+
+          <!-- Robin Lloyd-Jones -->
+          <div class="voice-block reveal">
+            <blockquote class="voice-quote">
+              "Islands of the Heart is a wonderful and powerful novel. It provides fascinating insights into the way of life and values of Pacific people, and the grim realities of a culture clash that can bring tragedy to people's lives. A wise, moving, unflinching and thought-provoking book, beautifully written."
+            </blockquote>
+            <div class="voice-attribution">
+              <span class="voice-name">Robin Lloyd-Jones</span>
+              <span class="voice-credential">Booker Prize Nominee, Lord of the Dance</span>
+            </div>
+          </div>
+
+          <!-- Angela Sunde -->
+          <div class="voice-block reveal">
+            <blockquote class="voice-quote">
+              "David Stringer writes with an authentic compassion for his characters and an intimate knowledge of the Pacific world they inhabit..."
+            </blockquote>
+            <div class="voice-attribution">
+              <span class="voice-name">Angela Sunde</span>
+              <span class="voice-credential">Literary Scholar, Auckland University</span>
+            </div>
+            <button
+              class="voice-expand-btn"
+              aria-expanded="false"
+              aria-controls="angela-full"
+              id="angela-toggle"
+            >
+              Read the full endorsement
+              <svg viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="voice-full" id="angela-full" role="region" aria-labelledby="angela-toggle">
+              <div class="voice-full-inner">
+                <p>Islands of the Heart is a deeply felt and beautifully constructed novel that moves between cultures and landscapes with remarkable assurance. David Stringer writes with an authentic compassion for his characters and an intimate knowledge of the Pacific world they inhabit.</p>
+                <p>The novel achieves something genuinely difficult: it presents the violence and tenderness of its characters' lives without ever reducing them to type. Wolf is a fully realised human being flawed, searching, capable of harm and of love and the world he moves through feels true in every detail.</p>
+                <p>Stringer understands the Samoan sense of family and belonging with a depth that gives the novel its emotional centre. And the New Zealand landscape, those extraordinary lakes and mountains is rendered with a lyrical precision that makes it inseparable from the interior lives of the characters who inhabit it.</p>
+                <p>This is a novel that lingers. A novel that asks difficult questions about identity, cultural belonging, and the possibility of redemption and is honest enough not to answer them too easily. A significant and important work of Pacific literary fiction.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <!-- ============================================================
+         CONTACT
+    ============================================================ -->
+    <section id="contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="contact-inner">
+
+          <div class="contact-text reveal">
+            <span class="section-label">Get in Touch</span>
+            <h2 class="section-heading" id="contact-heading">A Word from the Author</h2>
+            <hr class="section-rule" aria-hidden="true" />
+            <p>David Stringer welcomes genuine messages from readers, literary professionals and those with a connection to the world of Islands of the Heart.</p>
+            <p>Whether you have read the novel and wish to share your response, or are interested in discussing the work, he would be glad to hear from you.</p>
+            <a
+              href="mailto:dgstringer6@yahoo.com.au"
+              class="contact-email-link"
+              aria-label="Email David Stringer at dgstringer6@yahoo.com.au"
+            >
+              dgstringer6@yahoo.com.au
+            </a>
+          </div>
+
+          <div class="reveal">
+            <form
+              class="contact-form"
+              id="contact-form"
+              action="https://formspree.io/f/YOUR_FORM_ID"
+              method="POST"
+              novalidate
+              aria-label="Contact form"
+            >
+              <div class="form-group">
+                <label for="contact-name">Name</label>
+                <input
+                  type="text"
+                  id="contact-name"
+                  name="name"
+                  placeholder="Your name"
+                  autocomplete="name"
+                  required
+                  aria-required="true"
+                />
+              </div>
+              <div class="form-group">
+                <label for="contact-email">Email</label>
+                <input
+                  type="email"
+                  id="contact-email"
+                  name="email"
+                  placeholder="Your email address"
+                  autocomplete="email"
+                  required
+                  aria-required="true"
+                />
+              </div>
+              <div class="form-group">
+                <label for="contact-message">Message</label>
+                <textarea
+                  id="contact-message"
+                  name="message"
+                  placeholder="Your message"
+                  rows="6"
+                  required
+                  aria-required="true"
+                ></textarea>
+              </div>
+              <p class="form-note">Your message will be sent directly to David. He endeavours to respond personally.</p>
+              <button type="submit" class="btn btn-primary" style="align-self:flex-start;">Send Message</button>
+              <div class="form-success" id="form-success" role="alert" aria-live="polite">
+                Thank you. Your message has been sent.
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer id="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-name">David Stringer</span>
+        <span class="footer-book">Islands of the Heart</span>
+        <span class="footer-tagline">"Where memory, belonging and the Pacific meet."</span>
+        <div class="footer-row">
+          <a href="mailto:dgstringer6@yahoo.com.au" class="footer-email" aria-label="Email David Stringer">dgstringer6@yahoo.com.au</a>
+          <div class="footer-divider" aria-hidden="true"></div>
+          <span class="footer-copyright">&copy; David Stringer. All rights reserved.</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+  <script>
+    'use strict';
+
+    /* ============================================================
+       NAVIGATION — SCROLL BEHAVIOUR
+    ============================================================ */
+    (function () {
+      const nav = document.getElementById('site-nav');
+
+      function handleScroll() {
+        if (window.scrollY > 40) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
+        }
+      }
+
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      handleScroll();
+    })();
+
+    /* ============================================================
+       NAVIGATION — SMOOTH SCROLL
+    ============================================================ */
+    (function () {
+      const links = document.querySelectorAll('a[href^="#"]');
+
+      links.forEach(function (link) {
+        link.addEventListener('click', function (e) {
+          const href = link.getAttribute('href');
+          if (href === '#') return;
+          const target = document.querySelector(href);
+          if (!target) return;
+          e.preventDefault();
+          const navH = document.getElementById('site-nav').offsetHeight;
+          const top = target.getBoundingClientRect().top + window.scrollY - navH - 10;
+          window.scrollTo({ top: top, behavior: 'smooth' });
+        });
+      });
+    })();
+
+    /* ============================================================
+       NAVIGATION — HAMBURGER MENU
+    ============================================================ */
+    (function () {
+      const btn    = document.getElementById('hamburger-btn');
+      const mobile = document.getElementById('mobile-nav');
+      const mLinks = document.querySelectorAll('.mobile-nav-link');
+
+      function closeMenu() {
+        btn.setAttribute('aria-expanded', 'false');
+        mobile.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      btn.addEventListener('click', function () {
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+        if (isOpen) {
+          closeMenu();
+        } else {
+          btn.setAttribute('aria-expanded', 'true');
+          mobile.classList.add('open');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+
+      mLinks.forEach(function (link) {
+        link.addEventListener('click', closeMenu);
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeMenu();
+      });
+    })();
+
+    /* ============================================================
+       SCROLL REVEAL
+    ============================================================ */
+    (function () {
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (prefersReduced) {
+        document.querySelectorAll('.reveal').forEach(function (el) {
+          el.classList.add('visible');
+        });
+        return;
+      }
+
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('.reveal').forEach(function (el) {
+        observer.observe(el);
+      });
+    })();
+
+    /* ============================================================
+       CHARACTER CARDS — EXPAND / COLLAPSE
+    ============================================================ */
+    (function () {
+      const toggleBtns = document.querySelectorAll('.character-card-toggle');
+
+      toggleBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const card   = btn.closest('.character-card');
+          const isOpen = card.classList.contains('expanded');
+
+          card.classList.toggle('expanded', !isOpen);
+          btn.setAttribute('aria-expanded', String(!isOpen));
+
+          if (!isOpen) {
+            setTimeout(function () {
+              const navH = document.getElementById('site-nav').offsetHeight;
+              const top  = card.getBoundingClientRect().top + window.scrollY - navH - 20;
+              window.scrollTo({ top: top, behavior: 'smooth' });
+            }, 80);
+          }
+        });
+      });
+    })();
+
+    /* ============================================================
+       CHAPTER ACCORDION — EXPAND / COLLAPSE
+    ============================================================ */
+    (function () {
+      const accordions = document.querySelectorAll('.chapter-accordion');
+
+      accordions.forEach(function (acc) {
+        const trigger   = acc.querySelector('.chapter-trigger');
+        const closeBtns = acc.querySelectorAll('.chapter-close-btn');
+
+        trigger.addEventListener('click', function () {
+          const isOpen = acc.classList.contains('open');
+          acc.classList.toggle('open', !isOpen);
+          trigger.setAttribute('aria-expanded', String(!isOpen));
+        });
+
+        closeBtns.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            acc.classList.remove('open');
+            trigger.setAttribute('aria-expanded', 'false');
+            const navH = document.getElementById('site-nav').offsetHeight;
+            const top  = acc.getBoundingClientRect().top + window.scrollY - navH - 20;
+            window.scrollTo({ top: top, behavior: 'smooth' });
+          });
+        });
+      });
+    })();
+
+    /* ============================================================
+       LITERARY VOICES — EXPAND FULL ENDORSEMENT
+    ============================================================ */
+    (function () {
+      const expandBtns = document.querySelectorAll('.voice-expand-btn');
+
+      expandBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const targetId = btn.getAttribute('aria-controls');
+          const panel    = document.getElementById(targetId);
+          if (!panel) return;
+          const isOpen   = panel.classList.contains('open');
+          panel.classList.toggle('open', !isOpen);
+          btn.classList.toggle('open', !isOpen);
+          btn.setAttribute('aria-expanded', String(!isOpen));
+          btn.firstChild.textContent = isOpen ? 'Read the full endorsement' : 'Close endorsement';
+        });
+      });
+    })();
+
+    /* ============================================================
+       CONTACT FORM — VALIDATION & UX
+    ============================================================ */
+    (function () {
+      const form    = document.getElementById('contact-form');
+      const success = document.getElementById('form-success');
+      if (!form) return;
+
+      form.addEventListener('submit', function (e) {
+        const name    = form.querySelector('#contact-name').value.trim();
+        const email   = form.querySelector('#contact-email').value.trim();
+        const message = form.querySelector('#contact-message').value.trim();
+        const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!name || !email || !message || !emailRe.test(email)) {
+          e.preventDefault();
+          return;
+        }
+
+        if (form.action.includes('YOUR_FORM_ID')) {
+          e.preventDefault();
+          success.style.display = 'block';
+          form.reset();
+          setTimeout(function () {
+            success.style.display = 'none';
+          }, 5000);
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>

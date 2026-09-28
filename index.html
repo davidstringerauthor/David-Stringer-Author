@@ -1371,6 +1371,71 @@
     }
 
     /* ============================================================
+       VIDEO SECTION
+    ============================================================ */
+    #watch {
+      padding: 120px 0;
+      background: var(--bg-base);
+      position: relative;
+    }
+
+    #watch::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+    }
+
+    .watch-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .watch-header .section-rule {
+      margin: 0 auto 0;
+    }
+
+    .watch-intro {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--text-secondary);
+      margin-top: 0.5rem;
+      line-height: 1.6;
+    }
+
+    .watch-frame-wrap {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .watch-video-outer {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 */
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow:
+        0 0 0 1px rgba(201,169,110,0.08),
+        0 24px 64px rgba(0,0,0,0.7),
+        0 4px 16px rgba(0,0,0,0.5);
+    }
+
+    .watch-video-outer iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    /* ============================================================
        LITERARY VOICES
     ============================================================ */
     #voices {
@@ -1742,7 +1807,7 @@
       .nav-hamburger { display: flex; }
       .container { padding: 0 20px; }
 
-      #hero, #about, #story, #characters, #places, #book, #reading, #voices, #contact {
+      #hero, #about, #story, #characters, #places, #book, #reading, #watch, #voices, #contact {
         padding: 80px 0;
       }
 
@@ -1783,6 +1848,7 @@
       <li><a href="#places">Places</a></li>
       <li><a href="#book">The Book</a></li>
       <li><a href="#reading">Read</a></li>
+      <li><a href="#watch">Watch</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
 
@@ -1800,6 +1866,7 @@
     <li><a href="#places" class="mobile-nav-link">Places</a></li>
     <li><a href="#book" class="mobile-nav-link">The Book</a></li>
     <li><a href="#reading" class="mobile-nav-link">Read</a></li>
+    <li><a href="#watch" class="mobile-nav-link">Watch</a></li>
     <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
   </ul>
 
@@ -2278,10 +2345,6 @@
             <div class="chapter-body" id="chapter-one-body" role="region" aria-labelledby="chapter-one-trigger">
               <div class="chapter-body-inner">
 
-                <!-- ============================================================
-                     PROLOGUE TEXT — SUNDAY MORNING
-                     Exact text as supplied by the author, preserved in full.
-                ============================================================ -->
                 <div class="chapter-text">
 
                   <p class="chapter-first-para">Tania slammed the door shut on the bastard's back. That broad muscular back sporting his beloved SAMOA tattoo. She rushed to the window, drawn to him even now, as a sudden hush rippled through the surrounding apartments full of students awakening from last night. An expectant hush, anticipating the scream of insults, the smash and tinkle of things thrown…shards of a Saturday night becoming Sunday.</p>
@@ -2393,16 +2456,13 @@
                   <p>Wolf slowly focused on the man, seeing no-one he really wanted to converse with. 'OK,' he grunted and carried on to his car. There was a way to go yet, to drive out of these dry brown hills and into the lakes and mountains of the heartland. He was aware of Pink-face staring after him as if he thought he was an arsehole, but it didn't bother him because he didn't like the people down here much. They were either tourists or South Islanders, and both usually gave him the shits. He gunned the little Toyota and it blasted a puff of blue smoke into the heat haze of the main highway west, heading out of the barren lands and into the mountains.</p>
 
                 </div>
-                <!-- END PROLOGUE TEXT -->
 
                 <!-- Close button -->
                 <div class="chapter-close">
                   <button class="btn btn-ghost chapter-close-btn" aria-label="Close Prologue">Close Prologue</button>
                 </div>
 
-                <!-- ================================================
-                     AMAZON CTA — END OF PROLOGUE
-                ================================================ -->
+                <!-- Amazon CTA -->
                 <div class="chapter-amazon-cta" role="complementary" aria-label="Continue reading on Amazon">
                   <span class="chapter-amazon-cta-eyebrow">The journey continues</span>
                   <h3 class="chapter-amazon-cta-heading">Wolf is only just beginning.<br>What happens next changes everything.</h3>
@@ -2433,6 +2493,37 @@
           </div>
           <!-- END PROLOGUE -->
 
+        </div>
+
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <!-- ============================================================
+         WATCH — VIDEO SECTION
+         Placed directly after the Reading Room / Prologue section.
+    ============================================================ -->
+    <section id="watch" aria-labelledby="watch-heading">
+      <div class="container">
+
+        <div class="watch-header reveal">
+          <span class="section-label">The Film</span>
+          <h2 class="section-heading" id="watch-heading">Watch: Islands of the Heart</h2>
+          <hr class="section-rule" aria-hidden="true" style="margin:0 auto 0;" />
+          <p class="watch-intro">A short video about the novel, made by David's daughter.</p>
+        </div>
+
+        <div class="watch-frame-wrap reveal">
+          <div class="watch-video-outer">
+            <iframe
+              src="https://www.youtube.com/embed/zif0UbVvVw0?rel=0"
+              title="Islands of the Heart video by David Stringer's daughter"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
         </div>
 
       </div>

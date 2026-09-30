@@ -1055,6 +1055,49 @@
     }
 
     /* ============================================================
+       PLACE CARD IMAGES
+    ============================================================ */
+    .place-images {
+      display: flex;
+      gap: 12px;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .place-images--single {
+      display: block;
+      margin-top: 1.5rem;
+    }
+
+    .place-img {
+      border-radius: 6px;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.55), 0 2px 8px rgba(0,0,0,0.35);
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform var(--transition-slow), box-shadow var(--transition-slow);
+    }
+
+    .place-img:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 36px rgba(0,0,0,0.65), 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    .place-images--pair .place-img {
+      width: calc(50% - 6px);
+      flex: 0 0 calc(50% - 6px);
+    }
+
+    @media (max-width: 600px) {
+      .place-images--pair .place-img {
+        width: 100%;
+        flex: 0 0 100%;
+      }
+    }
+
+    /* ============================================================
        THE BOOK
     ============================================================ */
     #book {
@@ -2030,7 +2073,7 @@
           <article class="character-card reveal" aria-label="Character: Wolf">
             <div class="character-card-header">
               <div class="character-portrait-wrap">
-                <img src="wolf.png.jpg" alt="Wolf — central character of Islands of the Heart" />
+                <img src="wolf.jpg" alt="Wolf — central character of Islands of the Heart" />
               </div>
               <h3 class="character-name">Wolf</h3>
               <p class="character-hook">"The soldier who came home carrying a war he couldn't leave behind."</p>
@@ -2118,7 +2161,7 @@
           <article class="character-card reveal" aria-label="Character: Pepe">
             <div class="character-card-header">
               <div class="character-portrait-wrap">
-                <img src="pepe.png.jpg" alt="Pepe — character from Islands of the Heart" />
+                <img src="pepe.jpg" alt="Pepe — character from Islands of the Heart" />
               </div>
               <h3 class="character-name">Pepe</h3>
               <p class="character-hook">"A mother's love reaching across distance, memory and family."</p>
@@ -2222,32 +2265,66 @@
 
         <div class="places-grid">
 
+          <!-- NEW ZEALAND -->
           <div class="place-panel reveal">
             <span class="place-number">01</span>
             <h3 class="place-name">New Zealand</h3>
             <p class="place-atmosphere">"Mountains, lakes, roads and memories."</p>
-            <p class="place-description">New Zealand is the novel's bones, its cold clarity and wide open distances giving Wolf space to move, and space to avoid. From Queenstown to Arrowtown, from Lake Wakatipu to the high country beyond Wanaka, the South Island holds its beauty without comfort. It is a landscape that asks who you are and does not wait patiently for an answer.</p>
+            <p class="place-description">New Zealand is the novel's bones, its cold clarity and wide open distances giving Wolf space to move, and space to avoid. From Queenstown to Arrowtown, from Lake Wakatipu to the high country beyond the mighty Lindis Pass, the South Island holds its beauty without comfort. It is a landscape that asks who you are and does not wait patiently for an answer.</p>
           </div>
 
+          <!-- SAMOA -->
           <div class="place-panel reveal">
             <span class="place-number">02</span>
             <h3 class="place-name">Samoa</h3>
             <p class="place-atmosphere">"Family, belonging and the pull of the islands."</p>
             <p class="place-description">Where New Zealand is solitude, Samoa is presence. The islands represent what Wolf has run from and what continues to call him, family, warmth, the Samoan understanding that a person is not separate from their people. The Pacific is not merely a setting here. It is a living argument about how a life should be lived.</p>
+            <div class="place-images place-images--single">
+              <img
+                src="samoa beach.jpg"
+                alt="Warm sunset over a Samoan beach with palm trees — the pull of the Pacific islands"
+                class="place-img"
+                loading="lazy"
+              />
+            </div>
           </div>
 
+          <!-- CENTRAL OTAGO -->
           <div class="place-panel reveal">
             <span class="place-number">03</span>
             <h3 class="place-name">Central Otago</h3>
             <p class="place-atmosphere">"A landscape that burns its blues, browns and golds into the heart."</p>
             <p class="place-description">Lake Hawea, Wanaka, the high tussock country, Central Otago is one of the most visually dramatic landscapes on earth, and the novel uses it fully. This is where Steven's soul lives, that Wolf has dreamed of all his life, where the particular New Zealand idea of the self-sufficient individual finds its clearest expression. Beautiful, austere and unforgiving.</p>
+            <div class="place-images place-images--pair">
+              <img
+                src="Central Otago.jpg"
+                alt="The Lindis Pass road winding through golden tussock high country, Central Otago, New Zealand"
+                class="place-img"
+                loading="lazy"
+              />
+              <img
+                src="wanaka.jpg"
+                alt="Golden tussock hills of the Lindis Pass, Central Otago, New Zealand"
+                class="place-img"
+                loading="lazy"
+              />
+            </div>
           </div>
 
+          <!-- EAST TIMOR -->
           <div class="place-panel reveal">
             <span class="place-number">04</span>
             <h3 class="place-name">East Timor</h3>
             <p class="place-atmosphere">"A place Wolf has spent years trying not to remember."</p>
             <p class="place-description">East Timor does not appear on the page in the conventional sense, it arrives through Wolf. Through what he won't say. Through what others know happened there. It is the novel's dark gravity: the event or events that cannot be undone and that explain, without excusing, the man Wolf has become. Its presence is felt in every chapter even when it is not named.</p>
+            <div class="place-images place-images--single">
+              <img
+                src="east timor.jpg"
+                alt="Soldiers walking a rural road — the military history of East Timor that haunts Wolf throughout Islands of the Heart"
+                class="place-img"
+                loading="lazy"
+              />
+            </div>
           </div>
 
         </div>
@@ -2278,9 +2355,9 @@
             <hr class="section-rule" aria-hidden="true" />
 
             <div class="book-description">
-              <p>Islands of the Heart is a literary novel set across the South Island of New Zealand and the islands of Samoa, moving through the lives of Maori, Samoan and Palagi characters whose worlds collide in moments of love, violence, tenderness and cultural reckoning.</p>
+              <p>Islands of the Heart is a literary novel set across the islands of NZ and Samoa, moving through the lives of Maori, Samoan and Palagi characters whose worlds collide in moments of love, violence, tenderness and cultural reckoning.</p>
 
-              <p>At its centre is Wolf, a man shaped by the land, by family and by the events of East Timor. His journey north becomes an unwilling confrontation with everything he has tried to leave behind: the people who loved him, the people he hurt and the question of whether a man can ever truly outrun his own history.</p>
+              <p>At its centre is Wolf, a man shaped by the dual cultures and mixed blood he has inherited; and past events he cannot forget. His journey north becomes an unwilling confrontation with everything he has tried to leave behind: the people who loved him, the people he hurt and the question of whether a man can ever truly outrun his character, his history, his destiny.</p>
 
               <p>The novel explores Samoan family life and belonging, the particular isolation of the New Zealand high country, and the way cultural identity, Maori, Samoan, Palagi forms and fractures under the pressures of modern life. It is a novel about the evil depths and the noble summits of human behaviour, written with compassion and unflinching honesty.</p>
             </div>
@@ -2502,7 +2579,6 @@
 
     <!-- ============================================================
          WATCH — VIDEO SECTION
-         Placed directly after the Reading Room / Prologue section.
     ============================================================ -->
     <section id="watch" aria-labelledby="watch-heading">
       <div class="container">
